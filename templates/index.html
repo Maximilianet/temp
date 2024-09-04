@@ -3,24 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Инструмент экспорта</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Корзина и коллекции</title>
+    <!-- Подключаем CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('basket').style.display = 'none';
+            document.getElementById('collections').style.display = 'none';
+            document.getElementById(sectionId).style.display = 'block';
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
-        <div class="sidebar">
-            <ul>
-                <li><a href="#">Экспорт корзины</a></li>
-                <li><a href="#">Загрузка коллекций</a></li>
-            </ul>
-        </div>
-        <div class="main-content">
-            <h2>Загрузите файл JSON</h2>
+    <div class="navbar">
+        <a href="javascript:void(0)" onclick="showSection('basket')">Экспорт корзины</a>
+        <a href="javascript:void(0)" onclick="showSection('collections')">Загрузка коллекций</a>
+    </div>
+
+    <div class="content">
+        <!-- Секция для экспорта корзины (по умолчанию отображается) -->
+        <section id="basket">
+            <h2>Экспорт корзины</h2>
             <form action="/process_json" method="POST" enctype="multipart/form-data">
-                <input type="file" name="file" accept=".json" required>
-                <button type="submit">Экспортировать в Excel</button>
+                <label for="jsonFile">Загрузите файл JSON с данными корзины:</label>
+                <input type="file" name="file" id="jsonFile" accept=".json" required>
+                <button type="submit" class="upload-btn">Экспортировать в Excel</button>
             </form>
-        </div>
+        </section>
+
+        <!-- Секция для загрузки коллекций (по умолчанию скрыта) -->
+        <section id="collections" style="display: none;">
+            <h2>Загрузка коллекций</h2>
+            <p>Здесь появится функционал загрузки коллекций.</p>
+        </section>
     </div>
 </body>
 </html>
