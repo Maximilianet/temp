@@ -4,6 +4,7 @@
         "src": "app.py",
         "use": "@vercel/python"
       }
-    ]
+    ],
+    "buildCommand": "pip install --upgrade pip && pip install -r requirements.txt"
   }
   
