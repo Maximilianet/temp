@@ -40,6 +40,13 @@ def json_to_excel(json_data):
     output = BytesIO()
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         df.to_excel(writer, index=False, sheet_name='Basket')
+        workbook = writer.book
+        worksheet = writer.sheets['Basket']
+        
+        # Устанавливаем высоту строк начиная со 2 строки
+        for row_num in range(1, len(df) + 1):
+            worksheet.set_row(row_num, 200)  # Высота строки 200
+            
     output.seek(0)
     
     return output
