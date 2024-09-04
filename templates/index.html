@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конвертер JSON в Excel</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <h2>Меню</h2>
+            <ul>
+                <li><a href="/" class="active">Экспорт корзины</a></li>
+                <li><a href="#">Загрузка коллекций</a></li>
+            </ul>
+        </aside>
+        <main>
+            <h1>Экспорт корзины в Excel</h1>
+            <form id="jsonForm" action="/process_json" method="POST" enctype="multipart/form-data">
+                <label for="fileInput">Загрузите JSON файл:</label>
+                <input type="file" id="fileInput" name="file" accept=".json">
+                <br><br>
+                <button type="submit">Конвертировать в Excel</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
