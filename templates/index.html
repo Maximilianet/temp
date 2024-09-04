@@ -3,27 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Конвертер JSON в Excel</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>Инструмент экспорта</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
     <div class="container">
-        <aside>
-            <h2>Меню</h2>
+        <div class="sidebar">
             <ul>
-                <li><a href="/" class="active">Экспорт корзины</a></li>
+                <li><a href="#">Экспорт корзины</a></li>
                 <li><a href="#">Загрузка коллекций</a></li>
             </ul>
-        </aside>
-        <main>
-            <h1>Экспорт корзины в Excel</h1>
-            <form id="jsonForm" action="/process_json" method="POST" enctype="multipart/form-data">
-                <label for="fileInput">Загрузите JSON файл:</label>
-                <input type="file" id="fileInput" name="file" accept=".json">
-                <br><br>
-                <button type="submit">Конвертировать в Excel</button>
+        </div>
+        <div class="main-content">
+            <h2>Загрузите файл JSON</h2>
+            <form action="/process_json" method="POST" enctype="multipart/form-data">
+                <input type="file" name="file" accept=".json" required>
+                <button type="submit">Экспортировать в Excel</button>
             </form>
-        </main>
+        </div>
     </div>
 </body>
 </html>
